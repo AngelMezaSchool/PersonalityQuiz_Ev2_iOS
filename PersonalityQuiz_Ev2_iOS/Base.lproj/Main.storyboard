@@ -116,21 +116,33 @@
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <action selector="singleAnswerButtonPressed:" destination="tqD-LC-zu5" eventType="touchUpInside" id="KV4-dE-j5S"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZwN-0Z-cKd">
                                         <rect key="frame" x="0.0" y="54.333333333333371" width="398" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <action selector="singleAnswerButtonPressed:" destination="tqD-LC-zu5" eventType="touchUpInside" id="SEo-hU-bhh"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9D-81-jgf">
                                         <rect key="frame" x="0.0" y="108.66666666666669" width="398" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <action selector="singleAnswerButtonPressed:" destination="tqD-LC-zu5" eventType="touchUpInside" id="99z-DZ-gqf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceW-16-z8y">
                                         <rect key="frame" x="0.0" y="163.00000000000006" width="398" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <action selector="singleAnswerButtonPressed:" destination="tqD-LC-zu5" eventType="touchUpInside" id="OMm-ka-Dfv"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -197,6 +209,10 @@
                                         <rect key="frame" x="0.0" y="204" width="398" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Submit Answer"/>
+                                        <connections>
+                                            <action selector="multipleAnswerButtonPressed" destination="tqD-LC-zu5" eventType="touchUpInside" id="rxp-9w-aCy"/>
+                                            <action selector="rangeAnswerButtonPressed:" destination="tqD-LC-zu5" eventType="touchUpInside" id="iVI-TV-cc1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -204,7 +220,7 @@
                                 <rect key="frame" x="16" y="398.66666666666669" width="398" height="124.66666666666669"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="KeJ-Fh-ILz">
-                                        <rect key="frame" x="92" y="0.0" width="214" height="31"/>
+                                        <rect key="frame" x="90" y="0.0" width="218" height="31"/>
                                     </slider>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="75" translatesAutoresizingMaskIntoConstraints="NO" id="tNq-xF-SLd">
                                         <rect key="frame" x="120.33333333333336" y="50" width="157.66666666666663" height="20.333333333333329"/>
@@ -227,6 +243,9 @@
                                         <rect key="frame" x="129.66666666666669" y="90.333333333333314" width="138.66666666666669" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Submit Answer"/>
+                                        <connections>
+                                            <action selector="hola:" destination="tqD-LC-zu5" eventType="touchUpInside" id="KFp-1A-NJK"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -269,6 +288,10 @@
                     <navigationItem key="navigationItem" id="ipA-DG-zrf"/>
                     <connections>
                         <outlet property="multiLabel1" destination="kv0-Nz-fBM" id="Mvt-Aa-ieP"/>
+                        <outlet property="multiSwich1" destination="rT1-jM-w6Z" id="fii-EA-Kkk"/>
+                        <outlet property="multiSwitch2" destination="dGC-fU-AAc" id="33E-An-2pm"/>
+                        <outlet property="multiSwitch3" destination="ujB-4P-v8n" id="hrd-82-Ifq"/>
+                        <outlet property="multiSwitch4" destination="8D8-2J-7Bw" id="Miu-aa-GrI"/>
                         <outlet property="multilabel2" destination="zre-1X-mcg" id="aL2-qc-gn4"/>
                         <outlet property="multilabel3" destination="7yo-lZ-1ju" id="w5Z-89-imF"/>
                         <outlet property="multilabel4" destination="0pH-xF-0VF" id="zov-29-gwf"/>
@@ -278,6 +301,7 @@
                         <outlet property="rangeStackView" destination="ftP-Xo-tsD" id="6pN-SD-ddL"/>
                         <outlet property="rangedLabel1" destination="mr3-Jq-tWu" id="g0c-HW-6OT"/>
                         <outlet property="rangedLabel2" destination="tc1-6I-YMb" id="bcF-Te-9lL"/>
+                        <outlet property="rangedSlider" destination="KeJ-Fh-ILz" id="fYt-lY-kgx"/>
                         <outlet property="singleButton1" destination="kdd-Ad-Vnf" id="YvD-8V-O1m"/>
                         <outlet property="singleButton2" destination="ZwN-0Z-cKd" id="7ZO-w8-Cw1"/>
                         <outlet property="singleButton3" destination="s9D-81-jgf" id="dMs-Wf-vm5"/>

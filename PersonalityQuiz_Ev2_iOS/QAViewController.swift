@@ -24,40 +24,52 @@ class QAViewController: UIViewController {
     @IBOutlet weak var multilabel3: UILabel!
     @IBOutlet weak var multilabel4: UILabel!
     
+    @IBOutlet weak var multiSwich1: UISwitch!
+    @IBOutlet weak var multiSwitch2: UISwitch!
+    @IBOutlet weak var multiSwitch3: UISwitch!
+    @IBOutlet weak var multiSwitch4: UISwitch!
+    
     @IBOutlet weak var rangeStackView: UIStackView!
     @IBOutlet weak var rangedLabel1: UILabel!
     @IBOutlet weak var rangedLabel2: UILabel!
     
+    @IBOutlet weak var rangedSlider: UISlider!
+    
     @IBOutlet weak var questionProgressView: UIProgressView!
     
+    
+    
     var questions: [Question] = [
-        Question(text: "Which food do you like the most?",
-                 type: .single,
-                 answers: [
-                        Answer(text: "Streak", type: .dog),
-                        Answer(text: "Fish", type: .cat),
-                        Answer(text: "Carrots", type: .rabbit),
-                        Answer(text: "Corn", type: .turtle)
-          ]),
-        Question(text: "Which activities do you enjoy?",
-                 type: .multiple,
-                 answers: [
-                        Answer(text: "Swimming", type: .turtle),
-                        Answer(text: "Sleeping", type: .cat),
-                        Answer(text: "Cuddling", type: .rabbit),
-                        Answer(text: "Eating", type: .dog)
-          ]),
-        Question(text: "How much do you enjoy car rides?",
-                 type: .ranged,
-                 answers: [
-                        Answer(text: "I dislike them", type: .cat),
-                        Answer(text: "I get a little nervous", type: .rabbit),
-                        Answer(text: "I barely notice them", type: .turtle),
-                        Answer(text: "I love it", type: .dog)
-          ]),
-    ]
+           Question(text: "Which food do you like the most?",
+                    type: .single,
+                    answers: [
+                       Answer(text: "Steak", type: .dog),
+                       Answer(text: "Fish", type: .cat),
+                       Answer(text: "Carrots", type: .rabbit),
+                       Answer(text: "Corn", type: .turtle)
+               ]),
+           Question(text: "Which activities do you enjoy?",
+                    type: .multiple,
+                    answers: [
+                       Answer(text: "Swimming", type: .turtle),
+                       Answer(text: "Sleeping", type: .cat),
+                       Answer(text: "Cuddling", type: .rabbit),
+                       Answer(text: "Eating", type: .dog)
+               ]),
+           Question(text: "How much do you enjoy car rides?",
+                    type: .ranged,
+                    answers: [
+                       Answer(text: "I dislike them", type: .cat),
+                       Answer(text: "I get a little nervous", type: .rabbit),
+                       Answer(text: "I barely notice them", type: .turtle),
+                       Answer(text: "I love them", type: .dog)
+               ]),
+       ]
     
     var questionIndex = 0
+    
+    var answersChosen: [Answer] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,12 +95,12 @@ class QAViewController: UIViewController {
         
         
         switch currentQuestion.type {
-        case .single:
-            updateSingleStack(using: currentAnswers)
-        case .multiple:
-            updateMultipleStack(using: currentAnswers)
-        case .ranged:
-            updateRangedStack(using: currentAnswers)
+            case .single:
+                updateSingleStack(using: currentAnswers)
+            case .multiple:
+                updateMultipleStack(using: currentAnswers)
+            case .ranged:
+                updateRangedStack(using: currentAnswers)
         }
     }
     
@@ -106,10 +118,16 @@ class QAViewController: UIViewController {
         multilabel2.text = answers[1].text
         multilabel3.text = answers[2].text
         multilabel4.text = answers[3].text
+        
+        multiLabel1.text = answers[0].text
+        multilabel2.text = answers[1].text
+        multilabel3.text = answers[2].text
+        multilabel4.text = answers[3].text
     }
     
     func updateRangedStack(using answers: [Answer]){
         rangeStackView.isHidden = false
+        rangedSlider.setValue(0.5, animated: false)
         rangedLabel1.text = answers.first?.text
         rangedLabel2.text = answers.last?.text
 
@@ -118,6 +136,66 @@ class QAViewController: UIViewController {
     }
     
 
+    @IBAction func singleAnswerButtonPressed(_ sender: UIButton) {
+        let currentAnswers = questions[questionIndex].answers
+        
+        switch sender {
+            case singleButton1:
+                answersChosen.append(currentAnswers[0])
+            case singleButton2:
+                answersChosen.append(currentAnswers[1])
+            case singleButton3:
+                answersChosen.append(currentAnswers[2])
+            case singleButton4:
+                answersChosen.append(currentAnswers[3])
+            default:
+                break
+        }
+        
+        nextQuestion()
+    }
+    
+    @IBAction func multipleAnswerButtonPressed() {
+        let currentAnswers = questions[questionIndex].answers
+                
+                if  multiSwich1.isOn {
+                    answersChosen.append(currentAnswers[0])
+                }
+                if  multiSwitch2.isOn {
+                    answersChosen.append(currentAnswers[1])
+                }
+                if  multiSwitch3.isOn {
+                    answersChosen.append(currentAnswers[2])
+                }
+                if  multiSwitch4.isOn {
+                    answersChosen.append(currentAnswers[3])
+                }
+                
+                nextQuestion()
+    }
+    
+    
+    
+  
+    @IBAction func hola() {
+        let currentAnswers = questions[questionIndex].answers
+                
+        let index = Int(round(rangedSlider.value * Float(currentAnswers.count - 1)))
+        
+        answersChosen.append(currentAnswers[index])
+        
+        nextQuestion()
+    }
+    
+    
+    func nextQuestion() {
+        questionIndex += 1
+            if questionIndex < questions.count {
+                updateUI()
+            } else {
+                performSegue(withIdentifier: "ResultsSegue", sender: nil)
+            }
+    }
     /*
     // MARK: - Navigation
 
