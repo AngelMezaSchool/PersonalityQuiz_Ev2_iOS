@@ -177,6 +177,8 @@ class QAViewController: UIViewController {
     
     
   
+    
+    
     @IBAction func hola() {
         let currentAnswers = questions[questionIndex].answers
                 
